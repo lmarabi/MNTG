@@ -260,11 +260,11 @@ public class QueueReader {
                 File folder = new File("/home/yackel/TrafficGenerator/" + trafficRequest.getRequestId() + "/");  //make target directory
                 folder.mkdir();
                 folder.setWritable(true);
-                String command = " java -jar /media/Louai/MNTGExtractor.jar /media/Louai/osm/road_edges_partitioned/ /home/yackel/TrafficGenerator/" + " " + trafficRequest.getRequestId() + " " + trafficRequest.getInorderCoordinates() + " >> \\home\\yackel\\TrafficGenerator\\RoadLog.txt";// 44.891 -93.280 44.983 -93.086";
+                String command = " java -jar /media/Louai/MNTGExtractor.jar /media/osmeDataset/spatialHadoopPhase/road_edges_partitioned/ /home/yackel/TrafficGenerator/" + " " + trafficRequest.getRequestId() + " " + trafficRequest.getInorderCoordinates() + " >> \\home\\yackel\\TrafficGenerator\\RoadLog.txt";// 44.891 -93.280 44.983 -93.086";
 
                 System.out.println(command);
 
-                ProcessLauncher.exec("java -jar /media/Louai/MNTGExtractor.jar /media/Louai/osm/road_edges_partitioned/ /home/yackel/TrafficGenerator/" + " " + trafficRequest.getRequestId() + " " + trafficRequest.getInorderCoordinates() , false);
+                ProcessLauncher.exec("java -jar /media/Louai/MNTGExtractor.jar /media/osmeDataset/spatialHadoopPhase/road_edges_partitioned/ /home/yackel/TrafficGenerator/" + " " + trafficRequest.getRequestId() + " " + trafficRequest.getInorderCoordinates() , false);
 
 
                 proccessTrafficRequest(trafficRequest);
