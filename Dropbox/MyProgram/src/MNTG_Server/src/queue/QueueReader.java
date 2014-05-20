@@ -270,8 +270,8 @@ public class QueueReader {
                 proccessTrafficRequest(trafficRequest);
  if (trafficRequest.getMaprequestStatus() == true) {
                     //ProcessLauncher.exec(" java -jar /media/Louai/MNTGExtractor.jar /media/Louai/osm/road_edges_partitioned/ /home/yackel/TrafficGenerator/900/ 900 44.891 -93.280 44.983 -93.086", false); //output the text file of the road network to the destination directiory
-                    ProcessLauncher.exec( "cp /home/yackel/TrafficGenerator/"+trafficRequest.getRequestId()+"/node.txt" +"/home/yackel/public_html/app/webroot/downloads/"+trafficRequest.getRequestId()+"-Nodes.txt" , false);
-                    ProcessLauncher.exec( "cp /home/yackel/TrafficGenerator/"+trafficRequest.getRequestId()+"/edge.txt" +"/home/yackel/public_html/app/webroot/downloads/"+trafficRequest.getRequestId()+"-Edges.txt" , false);
+                    ProcessLauncher.exec( "cp /home/yackel/TrafficGenerator/"+trafficRequest.getRequestId()+"/node.txt" +" /home/yackel/public_html/app/webroot/downloads/"+trafficRequest.getRequestId()+"-Nodes.txt" , false);
+                    ProcessLauncher.exec( "cp /home/yackel/TrafficGenerator/"+trafficRequest.getRequestId()+"/edge.txt" +" /home/yackel/public_html/app/webroot/downloads/"+trafficRequest.getRequestId()+"-Edges.txt" , false);
                 }
 
 
