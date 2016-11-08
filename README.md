@@ -43,6 +43,8 @@ The output from the traffic generator is a visualization of the moving cars usin
 ## People
 Mohamed F. Mokbel
 
+Louai Alarabi
+
 Jie Bao
 
 Ahmed Eldawy
