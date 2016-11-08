@@ -9,9 +9,9 @@
 	<property name="lib.dir" location="lib" />
 	<property name="bin.dir" location="bin" />
 	<property name="version" value="1" />
-	<property name="projectName" value="MNTGServer" />
-        <property name="ant.build.javac.source" value="1.7" />
-        <property name="ant.build.javac.target" value="1.7" />
+	<property name="projectName" value="MNTG_Server" />
+        <property name="ant.build.javac.source" value="1.6" />
+        <property name="ant.build.javac.target" value="1.6" />
       
 	<property name="main.class" value="main.Main" />
 

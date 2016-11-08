@@ -31,10 +31,10 @@ public class Emailer {
         if(tr.getMaprequestStatus()==true){
             result = "Your requested road network file can be downloaded via "
                     + "http://"+ ConnectionProvider.HOST_NAME+ "/downloads/"
-                    + tr.getRequestId() + "-Nodes.txt.\n"
+                    + tr.getRequestId() + "-Nodes.txt \n"
                     +"and "
                     +"http://"+ ConnectionProvider.HOST_NAME+ "/downloads/"
-                    + tr.getRequestId() + "-Edges.txt.\n";
+                    + tr.getRequestId() + "-Edges.txt \n";
         }
         return result;
     }
