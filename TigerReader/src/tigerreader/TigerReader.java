@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
-import sun.tools.tree.ThisExpression;
+//import sun.tools.tree.ThisExpression;
 
 
 import tigerreader.Edge;
