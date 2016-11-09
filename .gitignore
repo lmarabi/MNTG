@@ -2,3 +2,7 @@
 *.jar
 /build
 /dist
+.project
+.classpath
+/.settings
+.DS_Store

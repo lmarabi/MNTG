@@ -40,7 +40,7 @@ public class QueueReader {
 		try {
 			statement = conn.createStatement();
 			ResultSet rs = statement
-					.executeQuery("select count(*) from traffic_requests where ready = 1 && finished=0");
+					.executeQuery("select count(*) from traffic_requests where ready = 1 && finished=0 && email!=''");
 			if (rs.next()) {
 				// System.out.println("There are " + rs.getInt(1) +
 				// " tasks in the queue.");
@@ -66,7 +66,7 @@ public class QueueReader {
 			statement = conn.createStatement();
 
 			ResultSet rs = statement
-					.executeQuery("select id, name, email, upperlat, upperlong, lowerlat, lowerlong, objBegin, extObjBegin, objPerTime, extObjPerTime, numObjClasses, numExtObjClasses, maxTime, reportProb, msd, scaleFactor from traffic_requests TR where TR.ready = 1 and TR.finished = 0 order by TR.created");
+					.executeQuery("select id, name, email, upperlat, upperlong, lowerlat, lowerlong, objBegin, extObjBegin, objPerTime, extObjPerTime, numObjClasses, numExtObjClasses, maxTime, reportProb, msd, scaleFactor from traffic_requests TR where TR.ready = 1 and TR.finished = 0 and TR.email!='' order by TR.created");
 			while (rs.next()) {
 				trafficRequestQueueCache.add(new TrafficRequest(rs.getInt(1),
 						rs.getString(2), rs.getString(3), rs.getDouble(4), rs
