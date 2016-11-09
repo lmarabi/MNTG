@@ -1,7 +1,7 @@
 *.class
 *.jar
-/build
-/dist
+*/build
+*/dist
 *.project
 *.classpath
 *.settings
