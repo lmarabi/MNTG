@@ -1,0 +1,109 @@
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+function exportForm() {
+    if (boxCoords === null) {
+        alert('No area has been chosen!');
+        return;
+    }
+    
+    //Get all the elements from the form 
+    var e = document.getElementById("type");
+    var type = e.options[e.selectedIndex].text;
+    var rName = document.getElementById("TrafficRequest.name").value;
+    if (rName === '') {
+        alert('Name filed is empty');
+        return;
+    }
+    var rEmail = document.getElementById("TrafficRequest.email").value;
+    if (rEmail === '') {
+        alert('Email filed is empty');
+        return;
+    }
+    
+    //check the element of each form 
+    if(type === 'BerlinMOD'){
+    		var scaleFactor = document.getElementById("TrafficRequest.scaleFactor").value;
+    		    if (scaleFactor === '') {
+    		    	        alert('Number of Vehicles (1-2000) filed is empty');
+    		    	                return;
+    		    	                 }if(isNaN(scaleFactor)){alert('Number of Vehicles (1-2000) must be a numeric');return;}
+    	}else{
+    		
+							var objBegin = document.getElementById("TrafficRequest.objBegin").value;
+    if (objBegin === '') {
+        alert('Starting Vehicles filed is empty');
+        return;
+    }if(isNaN(objBegin)){alert('Starting Vehicles must be a numeric');return;}
+    var  maxTime = document.getElementById("TrafficRequest.maxTime").value;
+    if (maxTime === '') {
+        alert('Simulation Time filed is empty');
+        return;
+    }if(isNaN(maxTime)){alert('Simulation Time must be a numeric');return;}
+    var  objPerTime = document.getElementById("TrafficRequest.objPerTime").value;
+    if (objPerTime === '') {
+        alert('Added Vehicles each Time Unit filed is empty');
+        return;
+    }if(isNaN(objPerTime)){alert('Added Vehicles each Time Unit must be a numeric');return;}
+    var  extObjBegin = document.getElementById("TrafficRequest.extObjBegin").value;
+    if (extObjBegin === '') {
+        alert('extObjBegin filed is empty');
+        return;
+    }if(isNaN(extObjBegin)){alert('extObjBegin must be a numeric');return;}
+    var msd = document.getElementById("TrafficRequest.msd").value;
+    if (msd === '') {
+        alert('msd filed is empty');
+        
+        return;
+    }if(isNaN(msd)){alert('msd must be a numeric');return;}
+    var  extObjPerTime = document.getElementById("TrafficRequest.extObjPerTime").value;
+if (extObjPerTime === '') {
+        alert('extObjPerTime filed is empty');
+        return;
+    }if(isNaN(extObjPerTime)){alert('extObjPerTime must be a numeric');return;}
+    var numObjClasses = document.getElementById("TrafficRequest.numObjClasses").value;
+if (numObjClasses === '') {
+        alert('numObjClasses filed is empty');
+        return;
+    }if(isNaN(numObjClasses)){alert('numObjClasses must be a numeric');return;}
+    var  numExtObjClasses = document.getElementById("TrafficRequest.numExtObjClasses").value;
+    if (numExtObjClasses === '') {
+        alert('numExtObjClasses filed is empty');
+        return;
+    }if(isNaN(numExtObjClasses)){alert('numExtObjClasses must be a numeric');return;}    		
+    		
+    		
+    		}
+    
+    
+    
+    request = new XMLHttpRequest();
+    request.onreadystatechange = respond_export;
+    request.open("POST", "control.php", true /* asynchronous? */)
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    request.send("action=coords&coords=" + document.getElementById("boxC").value +
+            "&type=" + type+
+            "&rName=" + rName +
+            "&rEmail=" + rEmail +
+            "&scaleFactor=" + scaleFactor +
+            "&objBegin=" + objBegin +
+            "&maxTime=" + maxTime +
+            "&objPerTime=" + objPerTime  +
+            "&extObjBegin=" + extObjBegin +
+            "&msd=" + msd +
+            "&extObjPerTime=" + extObjPerTime +
+            "&numObjClasses=" + numObjClasses +
+            "&numExtObjClasses=" + numExtObjClasses            
+            );
+  
+    alert("your request has been received thank you")
+}
+
+function respond_export() {
+
+
+}
+

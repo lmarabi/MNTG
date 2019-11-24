@@ -1,0 +1,73 @@
+<?php
+if ($_POST['action']=="view") {
+    echo $_POST['node']."/".$_POST['edge'];
+}
+
+
+if ($_POST['action']=="coords") {
+	$type = $_POST['type'];
+	$rName = $_POST['rName'];
+	$rEmail = $_POST['rEmail'];
+    switch ($type) {
+        case 'BerlinMOD':
+        $scaleFactor = $_POST['scaleFactor'];
+        $objBegin = 0;
+        $maxTime = 0;
+        $objPerTime = 0;
+        $extObjBegin = 0;
+        $msd = 0;
+        $extObjPerTime = 0;
+        $numObjClasses = 0;
+        $numExtObjClasses = 0;
+            break;
+        case 'Brinkhoff':
+        $scaleFactor = 'NULL';
+        $objBegin = $_POST['objBegin'];
+        $maxTime = $_POST['maxTime'];
+        $objPerTime = $_POST['objPerTime'];
+        $extObjBegin = $_POST['extObjBegin'];
+        $msd = $_POST['msd'];
+        $extObjPerTime = $_POST['extObjPerTime'];
+        $numObjClasses = $_POST['numObjClasses'];
+        $numExtObjClasses = $_POST['numExtObjClasses'];            
+            break;
+        
+    }
+
+/*
+$host = "localhost"; 
+$user = "traffic"; 
+$pass = "thetrafficgenerator";
+$db = "traffic" ;
+$table = "traffic_requests";
+*/
+
+$host = "localhost"; 
+$user = "postgres"; 
+$pass = "1234";
+$db = "saudiDB" ;
+$table = "traffic_requests";
+
+
+    $conn = pg_connect('host=localhost port=5432 dbname=saudiDB user=postgres password=1234');
+    $coords = split(',', $_POST['coords']);
+    $latmax = $coords[0];
+    $latmin = $coords[1];
+    $lonmax = $coords[2];
+    $lonmin = $coords[3];
+    $result = pg_query($conn, "INSERT INTO traffic_requests(
+            name, email, ready, finished, upperlat, upperlong, lowerlat, 
+            lowerlong, zoom, objbegin, extobjbegin, objpertime, extobjpertime, 
+            numobjclasses, numextobjclasses, maxtime, reportprob, msd, created, 
+            modified, scalefactor, finished_timestamp)
+    VALUES ('$rName' , '$rEmail', 0 ,  0 , $latmax , $lonmax , $latmin , 
+            $lonmax , 14, $objBegin , $extObjBegin , $objPerTime , $extObjPerTime , 
+            $numObjClasses , $numExtObjClasses , $maxTime , 0, $msd , now(), 
+            now(), $scaleFactor , now());") or die('Query failed: ' . pg_last_error());;
+    if (!$result) {
+        echo "An error occurred in inserting.\n";
+        exit;
+    }
+    pg_close ($conn);
+    }
+?>

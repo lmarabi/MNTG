@@ -1,0 +1,33 @@
+<?php
+if ($_POST['action']=="feedback") {
+	$rName = $_POST['rName'];
+	$rEmail = $_POST['rEmail'];
+        $message = $_POST['message'];
+
+/*
+$host = "localhost"; 
+$user = "traffic"; 
+$pass = "thetrafficgenerator";
+$db = "traffic" ;
+$table = "traffic_requests";
+*/
+
+$host = "localhost"; 
+$user = "postgres"; 
+$pass = "1234";
+$db = "saudiDB" ;
+$table = "traffic_requests";
+
+
+    $conn = pg_connect('host=localhost port=5432 dbname=saudiDB user=postgres password=1234');
+    $result = pg_query($conn, "INSERT INTO feedback(
+            name, email, feedback)
+    VALUES ('$rName' , '$rEmail', '$message');") or die('Query failed: ' . pg_last_error());;
+    if (!$result) {
+        echo "An error occurred in inserting.\n";
+        exit;
+    }
+    pg_close ($conn);
+    }
+?>
+
